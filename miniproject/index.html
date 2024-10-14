@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniProject</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div class="login-form">
+       <h1>Mini Project</h1>
+        <form id="studentForm">
+            <label for="studentName">Student Name:</label>
+            <input type="text" id="studentName" name="studentName">
+    
+            <label for="studentRole">Student Role Number:</label>
+            <input type="number" id="studentRole" name="studentRole">
+    
+            <label for="dob">Student Date of Birth:</label>
+            <input type="date" id="dob" name="dob">
+    
+            <label for="courseFee">Student Course Fee:</label>
+            <input type="number" id="courseFee" name="courseFee">
+    
+            <label for="paymentStatus">Payment Status:</label>
+            <select id="paymentStatus" name="paymentStatus">
+                <option value="">Select Payment Status</option>
+                <option value="paid">Paid</option>
+                <option value="unpaid">Unpaid</option>
+            </select>
+
+            <label for="studentBranch">Student Branch:</label>
+            <input type="text" id="studentBranch" name="studentBranch">
+
+            <label for="studentPlace">Student Place:</label>
+            <input type="text" id="studentPlace" name="studentPlace">
+    
+            <input type="submit" value="Submit">
+            <p class="error" id="errorMessage"></p>
+        </form> 
+
+        <script>
+             document.getElementById("studentForm").addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const studentName = document.getElementById("studentName").value;   
+
+            const studentRole = document.getElementById("studentRole").value;
+            const dob = document.getElementById("dob").value;
+            const courseFee = document.getElementById("courseFee").value;
+            const paymentStatus = document.getElementById("paymentStatus").value;
+
+            if (!studentName || !studentRole || !dob || !courseFee || !paymentStatus) {
+                document.getElementById("errorMessage").textContent = "All fields are required.";
+                return;
+            }
+
+            if (paymentStatus === "unpaid") {
+                alert("Please complete the payment before proceeding.");
+                return;
+            }
+
+            if (paymentStatus === "paid") {
+                window.location.href = "success.html";
+            }
+        });
+        </script>
+</body>
+</html>
